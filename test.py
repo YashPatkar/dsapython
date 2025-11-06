@@ -1,8 +1,11 @@
-# Question: Check if an array is sorted
+# Question: Remove Duplicates from Sorted Array [ in place ]
 class Solution:
-    def isSorted(self, arr) -> bool:
-        nums = arr
-        for i in range(1, len(nums) - 1):
-            if nums[i] > nums[i + 1]:
-                return False
-        return True
+    def removeDuplicates(self, nums):
+        current_val = nums[0]
+        count = 1
+        for i in nums[1:]:
+            if i != current_val:
+                nums[count] = i
+                count += 1
+                current_val = i
+        return count
