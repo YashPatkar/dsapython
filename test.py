@@ -1,19 +1,25 @@
-# Question: rotate the array to the right by k steps
+# Question: 283. Move Zeroes to the end of list [Leetcode]
 
-from typing import List
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
+class Solution(object):
+    def moveZeroes(self, nums):
         """
-        Do not return anything, modify nums in-place instead.
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
         """
-        k = k % len(nums)
-        k_before = []
-        k_after = []
-        n = len(nums) - k
+        zeros = 0
+        non_zeros = []
+  
+        for i in nums:
+            if i == 0:
+                zeros +=1
+            else:
+                non_zeros.append(i)
         
-        for i in nums[:n]:
-            k_before.append(i)
-        for i in nums[n:]:
-            k_after.append(i)
-
-        nums[:] = k_after + k_before
+        count = 0
+        for _ in range(0, len(non_zeros)):
+            nums[count] = non_zeros[count]
+            count+=1
+            
+        for _ in range(count, len(nums)):
+            nums[count] = 0
+            count+= 1
