@@ -1,25 +1,27 @@
-# Question: 283. Move Zeroes to the end of list [Leetcode]
+# Question: Merge 2 Sorted Arrays Without Duplicates [GeeksForGeeks]
 
-class Solution(object):
-    def moveZeroes(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
-        """
-        zeros = 0
-        non_zeros = []
-  
-        for i in nums:
-            if i == 0:
-                zeros +=1
-            else:
-                non_zeros.append(i)
-        
-        count = 0
-        for _ in range(0, len(non_zeros)):
-            nums[count] = non_zeros[count]
-            count+=1
-            
-        for _ in range(count, len(nums)):
-            nums[count] = 0
-            count+= 1
+class Solution:
+    def sortit(self, nums):
+      if len(nums) <= 1:
+        return nums
+      pivot = nums[0]
+      left = []
+      right = []
+      for i in nums[1:]:
+        if i <= pivot:
+          left.append(i)
+        else:
+          right.append(i)
+      return self.sortit(left) + [pivot] + self.sortit(right)
+
+    def findUnion(self, a, b):
+      non_dup = []
+      for i in a:
+        if i not in non_dup:
+          non_dup.append(i)
+      for i in b:
+        if i not in non_dup:
+          non_dup.append(i)
+      
+      nums = self.sortit(non_dup)
+      return nums
