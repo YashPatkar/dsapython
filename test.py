@@ -13,6 +13,8 @@ class Solution(object):
                 if count > total:
                     total = count
                     count = 0
+                else:
+                  count = 0
             else:
                 count+=1
         return max(total, count)
