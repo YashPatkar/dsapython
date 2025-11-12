@@ -1,20 +1,15 @@
-# Question: 485. Max Consecutive Ones [Leetcode]
+# Question: 1. Two Sum [Leetcode]
 
 class Solution(object):
-    def findMaxConsecutiveOnes(self, nums):
+    def twoSum(self, nums, target):
         """
         :type nums: List[int]
-        :rtype: int
+        :type target: int
+        :rtype: List[int]
         """
-        total = 0
-        count = 0
-        for i in nums:
-            if i == 0:
-                if count > total:
-                    total = count
-                    count = 0
-                else:
-                  count = 0
-            else:
-                count+=1
-        return max(total, count)
+        freq = {}
+        for index, i in enumerate(nums):
+            remain = target - i
+            if remain in freq:
+                return [freq[remain], index]
+            freq[i] = index
