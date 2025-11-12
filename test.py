@@ -1,15 +1,19 @@
-# Question: 1. Two Sum [Leetcode]
+# Question: 53. Maximum Subarray [Leetcode]
 
 class Solution(object):
-    def twoSum(self, nums, target):
+    def maxSubArray(self, nums):
         """
         :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
+        :rtype: int
         """
-        freq = {}
+        if len(nums) == 1:
+            return nums[0]
+        total = 0
+        max_total = float("-inf")
         for index, i in enumerate(nums):
-            remain = target - i
-            if remain in freq:
-                return [freq[remain], index]
-            freq[i] = index
+            for j in range(index, len(nums)):
+                total += nums[j]
+                if total > max_total:
+                    max_total = total
+            total = 0
+        return max_total
