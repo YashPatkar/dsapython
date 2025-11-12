@@ -1,19 +1,18 @@
-# Question: 268. Missing Number [Leetcode]
+# Question: 485. Max Consecutive Ones [Leetcode]
 
 class Solution(object):
-
-    def missingNumber(self, nums):
+    def findMaxConsecutiveOnes(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        num_sum = 0
+        total = 0
+        count = 0
         for i in nums:
-            num_sum += i
-        
-        n = len(nums)
-        n_sum = 0
-        for i in range(n + 1):
-            n_sum += i
-        
-        return n_sum - num_sum
+            if i == 0:
+                if count > total:
+                    total = count
+                    count = 0
+            else:
+                count+=1
+        return max(total, count)
