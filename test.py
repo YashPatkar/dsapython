@@ -6,14 +6,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        if len(nums) == 1:
-            return nums[0]
+        maxi = float('-inf')
         total = 0
-        max_total = float("-inf")
-        for index, i in enumerate(nums):
-            for j in range(index, len(nums)):
-                total += nums[j]
-                if total > max_total:
-                    max_total = total
-            total = 0
-        return max_total
+        for i in nums:
+            total += i
+            if total > maxi:
+                maxi = total
+            if total < 0:
+                total = 0
+        return maxi
