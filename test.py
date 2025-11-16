@@ -1,17 +1,14 @@
-# Question: 53. Maximum Subarray [Leetcode]
+# Question: 121. Best Time to Buy and Sell Stock [Leetcode]
 
 class Solution(object):
-    def maxSubArray(self, nums):
+    def maxProfit(self, prices):
         """
-        :type nums: List[int]
+        :type prices: List[int]
         :rtype: int
         """
-        maxi = float('-inf')
-        total = 0
-        for i in nums:
-            total += i
-            if total > maxi:
-                maxi = total
-            if total < 0:
-                total = 0
-        return maxi
+        large = 0
+        for i in range(len(prices)-1):
+            for j in range(i+1, len(prices)):
+                if prices[i] < prices[j]:
+                    large = max(large, prices[j] - prices[i])
+        return large
