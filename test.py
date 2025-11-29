@@ -1,14 +1,22 @@
-# Question: 121. Best Time to Buy and Sell Stock [Leetcode]
+# Question: 2149. Rearrange Array Elements by Sign [Leetcode]
 
 class Solution(object):
-    def maxProfit(self, prices):
+    def rearrangeArray(self, nums):
         """
-        :type prices: List[int]
-        :rtype: int
+        :type nums: List[int]
+        :rtype: List[int]
         """
-        large = 0
-        for i in range(len(prices)-1):
-            for j in range(i+1, len(prices)):
-                if prices[i] < prices[j]:
-                    large = max(large, prices[j] - prices[i])
-        return large
+
+        non_neg, neg = [], []
+        for i in nums:
+            if i > 0:
+                non_neg.append(i)
+            else:
+                neg.append(i)
+        
+        result = []
+        for i in range(min(len(non_neg), len(neg))):
+            result.append(non_neg[i])
+            result.append(neg[i])
+        
+        return result
