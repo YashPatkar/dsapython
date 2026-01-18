@@ -7,16 +7,15 @@ class Solution(object):
         :rtype: List[int]
         """
 
-        non_neg, neg = [], []
+        result = [0 for _ in range(len(nums))]
+  
+        pos, neg = 0, 1
+        
         for i in nums:
             if i > 0:
-                non_neg.append(i)
+                result[pos] = i
+                pos+=2
             else:
-                neg.append(i)
-        
-        result = []
-        for i in range(min(len(non_neg), len(neg))):
-            result.append(non_neg[i])
-            result.append(neg[i])
-        
+                result[neg] = i
+                neg+=2
         return result
