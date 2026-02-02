@@ -8,7 +8,7 @@ class Solution(object):
         """
 
         result = [0 for _ in range(len(nums))]
-  
+
         pos, neg = 0, 1
         
         for i in nums:
