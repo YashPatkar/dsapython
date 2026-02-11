@@ -1,5 +1,14 @@
-nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# 1480. Leetcode
 
-for index1, row in enumerate(nums):
-    for index2, col in enumerate(row):
-        print(f"index1({row}), index2({col})")
+class Solution(object):
+    def runningSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        total = 0
+        for index, i in enumerate(nums):
+            total += i
+            nums[index] = total
+        
+        return nums
