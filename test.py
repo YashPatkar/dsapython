@@ -1,24 +1,24 @@
+# 905. Leetcode
 
-# 80. Leetcode
 class Solution(object):
-    def removeDuplicates(self, nums):
+    def sortArrayByParity(self, nums):
         """
         :type nums: List[int]
-        :rtype: int
+        :rtype: List[int]
         """
-        freq = {}
-        
+        if len(nums) <= 1:
+            return nums
+
+        odd, even = [], []
+
         for i in nums:
-            if i not in freq:
-                freq[i] = 1
+            if i % 2 == 0:
+                even.append(i)
             else:
-                if freq[i] <= 1:
-                    freq[i] += 1
-        print(freq)
-        count = 0
-        for key, value in freq.items():
-            for i in range(value):
-                nums[count] = key
-                count += 1
-        print(nums)
-        return count
+                odd.append(i)
+        
+        result = []
+
+        result.extend(even)
+        result.extend(odd)
+        return result
