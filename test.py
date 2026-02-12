@@ -1,24 +1,12 @@
-# 905. Leetcode
+# 1672. Leetcode
 
 class Solution(object):
-    def sortArrayByParity(self, nums):
+    def maximumWealth(self, accounts):
         """
-        :type nums: List[int]
-        :rtype: List[int]
+        :type accounts: List[List[int]]
+        :rtype: int
         """
-        if len(nums) <= 1:
-            return nums
-
-        odd, even = [], []
-
-        for i in nums:
-            if i % 2 == 0:
-                even.append(i)
-            else:
-                odd.append(i)
-        
-        result = []
-
-        result.extend(even)
-        result.extend(odd)
+        result = 0
+        for account in accounts:
+            result = max(result, sum(account))
         return result
