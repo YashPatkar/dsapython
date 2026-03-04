@@ -1,12 +1,23 @@
-# 1672. Leetcode
+# 75. Leetcode
 
 class Solution(object):
-    def maximumWealth(self, accounts):
+    def sortColors(self, nums):
         """
-        :type accounts: List[List[int]]
-        :rtype: int
+        :type nums: List[int]
+        :rtype: None Do not return anything, modify nums in-place instead.
         """
-        result = 0
-        for account in accounts:
-            result = max(result, sum(account))
-        return result
+
+        freq = {}
+
+        for i in nums:
+            if i not in freq:
+                freq[i] = 1
+            else:
+                freq[i] += 1
+
+        index = 0
+        for key, value in freq.items():
+            for i in range(value):
+                nums[index] = key
+                index+=1
+        print(nums)
