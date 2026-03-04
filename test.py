@@ -7,17 +7,27 @@ class Solution(object):
         :rtype: None Do not return anything, modify nums in-place instead.
         """
 
-        freq = {}
+        
+        left = 0
+        right = len(nums) - 1
 
-        for i in nums:
-            if i not in freq:
-                freq[i] = 1
+        i = 0
+        while i <= right:
+            if nums[i] == 2:
+                # swap with right 
+                temp = nums[right]
+                nums[right] = nums[i]
+                nums[i] = temp
+                right-=1
+
+            elif nums[i] == 0:
+                # swap with left
+                temp = nums[left]
+                nums[left] = nums[i]
+                nums[i] = temp
+
+                left+=1
+                i+=1
+            
             else:
-                freq[i] += 1
-
-        index = 0
-        for key, value in freq.items():
-            for i in range(value):
-                nums[index] = key
-                index+=1
-        print(nums)
+                i+=1
