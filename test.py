@@ -1,33 +1,26 @@
-# 75. Leetcode
+# 704 Leetcode
 
 class Solution(object):
-    def sortColors(self, nums):
+    def search(self, nums, target):
         """
         :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
+        :type target: int
+        :rtype: int
         """
-
         
         left = 0
         right = len(nums) - 1
 
-        i = 0
-        while i <= right:
-            if nums[i] == 2:
-                # swap with right 
-                temp = nums[right]
-                nums[right] = nums[i]
-                nums[i] = temp
-                right-=1
-
-            elif nums[i] == 0:
-                # swap with left
-                temp = nums[left]
-                nums[left] = nums[i]
-                nums[i] = temp
-
-                left+=1
-                i+=1
+        while left <= right:
+            mid = (left + right) // 2
             
-            else:
-                i+=1
+            if nums[mid] == target:
+                return mid
+            
+            elif target < nums[mid]:
+                right = mid - 1
+            
+            elif target > nums[mid]:
+                left = mid + 1
+            
+        return -1
